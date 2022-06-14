@@ -53,3 +53,12 @@ class TestComparePasswordHash(unittest.TestCase):
         amount = passcheck.compare_password_hash(self.hashes, unknown_hash)
         self.assertEqual(amount, 0)
 
+
+class TestCheckPassword(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.passwords = ["123", "abc"]
+
+    def test_right_passwords(self):
+        for amount in passcheck.check_password(self.passwords):
+            self.assertIsInstance(amount, str)
